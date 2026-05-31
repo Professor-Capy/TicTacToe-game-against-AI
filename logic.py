@@ -79,8 +79,19 @@ def terminal(state: list) -> tuple:
     # if the game is still going
     return (False, None)
 
+# this will be used for finding the exact point for each terminal state
 def utility(winner: str | None = None) -> int:
-    pass
+    point: int
+
+    match winner:
+        case 'X':
+            point = 1
+        case 'O':
+            point = -1
+        case _:
+            point = 0
+
+    return point
 
 # Use this for testing
 if  __name__ == '__main__':
