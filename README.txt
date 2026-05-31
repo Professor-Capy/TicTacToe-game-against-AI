@@ -21,5 +21,7 @@ returns an answer in the form of a tuple
 terminal function accepts 1 param, state, and returns a tuple, in format of:
 (isTerminalState: bool, points: int)
 in actual code you'll see the points as utility, bcuz utility returns an int
+this func is used for determining if a state is a terminal state, meaning if the game is over
 
-
+utility function accepts 1 optional param, winner, with a default value of None
+it is used for finding the point for each winner of the game
