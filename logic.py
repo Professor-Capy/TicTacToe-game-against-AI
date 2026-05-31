@@ -55,7 +55,7 @@ def terminal(state: list) -> tuple:
     # check for a winner first
     for player in ['X', 'O']:
         # Check Rows
-        for r in range(3):
+        for r in range(0, 3):
             if state[r][0] == player and state[r][1] == player and state[r][2] == player:
                 return (True, utility(player))
 
