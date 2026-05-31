@@ -1,4 +1,3 @@
-from typing import Optional
 # used for determining the player
 def player(state: list) -> str:
     x: int = 0
