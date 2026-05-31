@@ -1,3 +1,4 @@
+from typing import Optional
 # used for determining the player
 def player(state: list) -> str:
     x: int = 0
@@ -44,6 +45,57 @@ def action(state: list) -> tuple: # it returns a tuple of tuples
 
     return tuple(possibleActions)
 
+# Will be used for determining if a state is a 'terminal' state
+# A state is terminal if:
+# A. One agent won the game (aka the other agent lost)
+# B. No available moves are left (draw/tie)
+# will return a tuple in format of:
+# (isTerminalState: bool, winner: str | None)
+def terminal(state: list) -> tuple:
+    # Check if draw/tie
+
+    emptySpaces: tuple = action(state)
+    # empty data structs in py are falsy
+    # and if action finds no empty spaces, it will return an empty tuple
+    # so basically, this checks if any moves are still available
+    # and if no moves are available, that means its a draw
+    if not emptySpaces:
+        return (True, utility())
+
+    xSpace: dict = {0: [],
+                    1: [],
+                    2: []}
+    oSpace: dict = {0: [],
+                    1: [],
+                    2: []}
+    r: int = 0
+    copyState = [row[:] for row in state]
+    for row in copyState:
+        for i in range(len(row) - 1, -1, -1): # loops through it backwards
+            box = row[i]
+            match box:
+                case 'X':
+                    xSpace[r].append(i)
+                    row.pop(i)
+                case 'O':
+                    oSpace[r].append(i)
+                    row.pop(i)
+        r += 1
+
+    # checking for horizontal win
+    for i in range(0, 3):
+        if len(xSpace[i]) == 3:
+            return (True, utility('X'))
+        if len(oSpace[i]) == 3:
+            return (True, utility('O'))
+
+    # checking for vertical win
+    for i in range(0, 3):
+        pass
+
+
+def utility(winner: str | None = None) -> int:
+    pass
 
 # Use this for testing
 if  __name__ == '__main__':
@@ -59,4 +111,5 @@ if  __name__ == '__main__':
     terminalDrawState = [['O', 'X', 'O'],
                          ['O', 'X', 'X'],
                          ['X', 'O', 'X']]
-    
+    print(terminal(emptyState))
+
