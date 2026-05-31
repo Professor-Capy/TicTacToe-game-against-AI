@@ -18,4 +18,5 @@ action function accepts 1 param, state
 is used for finding all possible moves and
 returns an answer in the form of a tuple
 
-terminal is UNFINISHED
+terminal function accepts 1 param, state, and returns a tuple, in format of:
+(isTerminalState: bool, )

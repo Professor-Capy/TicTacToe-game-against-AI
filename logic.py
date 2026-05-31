@@ -54,36 +54,30 @@ def action(state: list) -> tuple: # it returns a tuple of tuples
 def terminal(state: list) -> tuple:
     # check for a winner first
     for player in ['X', 'O']:
-        # Check Rows
+        # check for horizontal win
         for r in range(0, 3):
             if state[r][0] == player and state[r][1] == player and state[r][2] == player:
                 return (True, utility(player))
 
-        # Check Columns
-        for c in range(3):
+        # check for vertical win
+        for c in range(0, 3):
             if state[0][c] == player and state[1][c] == player and state[2][c] == player:
                 return (True, utility(player))
 
-        # Check Main Diagonal (Top-Left to Bottom-Right)
+        # check for diagonal win (top-left to bottom-right)
         if state[0][0] == player and state[1][1] == player and state[2][2] == player:
             return (True, utility(player))
 
-        # Check Anti-Diagonal (Top-Right to Bottom-Left)
+        # check for diagonal win (bottom-left to top-right)
         if state[0][2] == player and state[1][1] == player and state[2][0] == player:
             return (True, utility(player))
 
-    # 2. Check for a Draw/Tie (No empty spaces left, and nobody won)
-    emptySpaces = action(state)
-    if not emptySpaces:
-        return (True, utility())  # Assuming utility() with no args implies a tie (e.g., 0)
+    # check for draw/tie
+    if not action(state):
+        return (True, utility())
 
-    # 3. Game is still ongoing
+    # if the game is still going
     return (False, None)
-
-
-    # check for diagonal win
-
-
 
 def utility(winner: str | None = None) -> int:
     pass
