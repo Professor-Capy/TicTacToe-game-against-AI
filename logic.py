@@ -52,52 +52,37 @@ def action(state: list) -> tuple: # it returns a tuple of tuples
 # will return a tuple in format of:
 # (isTerminalState: bool, winner: str | None)
 def terminal(state: list) -> tuple:
-    # Check if draw/tie
+    # check for a winner first
+    for player in ['X', 'O']:
+        # Check Rows
+        for r in range(3):
+            if state[r][0] == player and state[r][1] == player and state[r][2] == player:
+                return (True, utility(player))
 
-    emptySpaces: tuple = action(state)
-    # empty data structs in py are falsy
-    # and if action finds no empty spaces, it will return an empty tuple
-    # so basically, this checks if any moves are still available
-    # and if no moves are available, that means its a draw
+        # Check Columns
+        for c in range(3):
+            if state[0][c] == player and state[1][c] == player and state[2][c] == player:
+                return (True, utility(player))
+
+        # Check Main Diagonal (Top-Left to Bottom-Right)
+        if state[0][0] == player and state[1][1] == player and state[2][2] == player:
+            return (True, utility(player))
+
+        # Check Anti-Diagonal (Top-Right to Bottom-Left)
+        if state[0][2] == player and state[1][1] == player and state[2][0] == player:
+            return (True, utility(player))
+
+    # 2. Check for a Draw/Tie (No empty spaces left, and nobody won)
+    emptySpaces = action(state)
     if not emptySpaces:
-        return (True, utility())
+        return (True, utility())  # Assuming utility() with no args implies a tie (e.g., 0)
 
-    xSpace: dict = {0: [],
-                    1: [],
-                    2: []}
-    oSpace: dict = {0: [],
-                    1: [],
-                    2: []}
-    r: int = 0
-    copyState = [row[:] for row in state]
-    for row in copyState:
-        for i in range(len(row) - 1, -1, -1): # loops through it backwards
-            box = row[i]
-            match box:
-                case 'X':
-                    xSpace[r].append(i)
-                    row.pop(i)
-                case 'O':
-                    oSpace[r].append(i)
-                    row.pop(i)
-        r += 1
+    # 3. Game is still ongoing
+    return (False, None)
 
-    # checking for horizontal win
-    for i in range(0, 3):
-        if len(xSpace[i]) == 3:
-            return (True, utility('X'))
-        elif len(oSpace[i]) == 3:
-            return (True, utility('O'))
-
-    # checking for vertical win
-    for i in range(0, 3):
-        if sum(xSpace[i]) == 3:
-            return (True, utility('X'))
-        elif sum(oSpace[i]) == 3:
-            return (True, utility('O'))
 
     # check for diagonal win
-    
+
 
 
 def utility(winner: str | None = None) -> int:
