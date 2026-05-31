@@ -91,7 +91,7 @@ def terminal(state: list) -> tuple:
 
     # checking for vertical win
     for i in range(0, 3):
-        pass
+        if xSpace[i].sum()
 
 
 def utility(winner: str | None = None) -> int:
