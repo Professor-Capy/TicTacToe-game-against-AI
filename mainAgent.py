@@ -7,8 +7,4 @@ class Agent(ABC):
 
     @abstractmethod
     def get_move(self, state: list) -> tuple:
-        """
-        Accepts the board state and returns the best move coordinates (row, col).
-        Must be implemented by sister classes.
-        """
         pass
