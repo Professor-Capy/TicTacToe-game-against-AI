@@ -86,12 +86,18 @@ def terminal(state: list) -> tuple:
     for i in range(0, 3):
         if len(xSpace[i]) == 3:
             return (True, utility('X'))
-        if len(oSpace[i]) == 3:
+        elif len(oSpace[i]) == 3:
             return (True, utility('O'))
 
     # checking for vertical win
     for i in range(0, 3):
-        if xSpace[i].sum()
+        if sum(xSpace[i]) == 3:
+            return (True, utility('X'))
+        elif sum(oSpace[i]) == 3:
+            return (True, utility('O'))
+
+    # check for diagonal win
+    
 
 
 def utility(winner: str | None = None) -> int:
