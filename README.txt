@@ -19,4 +19,5 @@ is used for finding all possible moves and
 returns an answer in the form of a tuple
 
 terminal function accepts 1 param, state, and returns a tuple, in format of:
-(isTerminalState: bool, )
+(isTerminalState: bool, points: int)
+in actual code you'll see the points as utility, bcuz utility returns an int
