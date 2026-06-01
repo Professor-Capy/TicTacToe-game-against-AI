@@ -53,4 +53,4 @@ class MinimaxAgent(Agent):
 
 if __name__ == '__main__':
     mm = MinimaxAgent('X')
-    mm.getMove(emptyState())
+    print(mm.getMove(emptyState()))
