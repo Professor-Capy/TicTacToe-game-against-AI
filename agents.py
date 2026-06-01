@@ -34,7 +34,7 @@ class MinimaxAgent(Agent):
                 minEval = min(minEval, eval)
             return minEval
 
-    def getMove(self, state: list) -> dict:
+    def getMove(self, state: list) -> tuple:
         actions = action(state)
         bestScore = float('-inf')
         bestMove = None
@@ -54,4 +54,3 @@ class MinimaxAgent(Agent):
 if __name__ == '__main__':
     mm = MinimaxAgent('X')
     mm.getMove(emptyState())
-    print()
