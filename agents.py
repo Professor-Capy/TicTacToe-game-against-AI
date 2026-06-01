@@ -9,19 +9,27 @@ class Agent(ABC):
         self.min = "O" if max == "X" else "X"
 
     @abstractmethod
-    def get_move(self, state: list) -> dict:
+    def getMove(self, state: list) -> dict:
         pass
 
 class MinimaxAgent(Agent):
     def moveLoop(self, state: list, actions: tuple):
         for move in actions:
             newState = result(state, move)
-            isTerminal, winner = terminal(newState)
+            isTerminal, point = terminal(newState)
             if isTerminal:
-                
+                self.points[move].append(point)
 
-
-    def get_move(self, state: list) -> dict:
+    def getMove(self, state: list) -> dict:
         actions = action(state)
-        point = self.moveLoop(state, actions)
+        self.points = {}
+        for move in actions:
+            self.points[move] = []
+        self.moveLoop(state, actions)
 
+        print(self.points)
+
+
+if __name__ == '__main__':
+    mm = MinimaxAgent('X')
+    mm.getMove()
