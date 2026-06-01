@@ -14,7 +14,7 @@ class Agent(ABC):
         pass
 
 class MinimaxAgent(Agent):
-    def moveLoop(self, state: list, actions: tuple):
+    def moveLoop(self, state: list, actions: tuple, maximize: bool):
         for move in actions:
             newState = result(state, move)
             isTerminal, point = terminal(newState)
@@ -26,7 +26,7 @@ class MinimaxAgent(Agent):
         self.points = {}
         for move in actions:
             self.points[move] = []
-        self.moveLoop(state, actions)
+        self.moveLoop(state, actions, True)
 
         print(self.points)
 
