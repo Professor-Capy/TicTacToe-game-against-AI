@@ -36,15 +36,25 @@ class MinimaxAgent(Agent):
 
     def getMove(self, state: list) -> tuple:
         actions = action(state)
-        bestScore = float('-inf')
         bestMove = None
-        for move in actions:
-            newState = result(state, move)
-            score = self.minimax(newState, False)
+        if self.max == 'X':
+            bestScore = float('-inf')
+            for move in actions:
+                newState = result(state, move)
+                score = self.minimax(newState, False)
 
-            if score > bestScore:
-                bestScore = score
-                bestMove = move
+                if score > bestScore:
+                    bestScore = score
+                    bestMove = move
+        else:
+           bestScore = float('inf')
+           for move in actions:
+               newState = result(state, move)
+               score = self.minimax(newState, True)
+
+               if score < bestScore:
+                   bestScore = score
+                   bestMove = move
 
         return bestMove
 

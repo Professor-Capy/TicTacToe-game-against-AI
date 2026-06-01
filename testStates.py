@@ -18,8 +18,13 @@ def terminalDrawState():
             ['O', 'X', 'X'],
             ['X', 'O', 'X']]
 
-almostDoneState = [
-    ['X', 'O', 'X'],
-    ['O', 'X', 'O'],
-    ['O', 'X', '#']
-]
+def almostTerminalDrawState():
+    return [['X', 'O', 'X'],
+            ['O', 'X', 'O'],
+            ['O', 'X', '#']]
+
+def almostTerminalXState():
+    return [['X', 'X', '#'],
+            ['O', 'O', '#'],
+            ['O', 'X', 'X']]
+
