@@ -15,7 +15,6 @@ class Agent(ABC):
 
 class MinimaxAgent(Agent):
     def minimax(self, state: list, isMaximize: bool) -> int:
-        nextMax = not isMaximize
         isTerminal, score = terminal(state)
         if isTerminal:
             return score
@@ -23,7 +22,17 @@ class MinimaxAgent(Agent):
         actions = action(state)
 
         if isMaximize:
-            
+            maxEval = float('-inf')
+            for move in actions:
+                eval = self.minimax(result(state, move), False)
+                maxEval = max(maxEval, eval)
+            return maxEval
+        else: # MinAgent
+            minEval = float('inf')
+            for move in actions:
+                eval = self.minimax(result(state, move), True)
+                minEval = min(minEval, eval)
+            return minEval
 
     def getMove(self, state: list) -> dict:
         actions = action(state)
