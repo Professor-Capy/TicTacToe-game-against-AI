@@ -39,9 +39,12 @@ def action(state: list) -> tuple: # it returns a tuple of tuples
         for box in row:
             if box == '#':
                 possibleActions.append((r, c))
+            c += 1
 
-        c += 1
-        r += 1
+        r += 1     
+
+    return tuple(possibleActions)
+
 
     return tuple(possibleActions)
 
