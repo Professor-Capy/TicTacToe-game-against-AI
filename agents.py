@@ -1,6 +1,7 @@
 from dataStructs import Stack
 from abc import ABC, abstractmethod
 from logic import action, result, terminal
+from testStates import emptyState
 
 # this is just going to be used for the purpose ofcreating subclasses
 class Agent(ABC):
@@ -32,4 +33,4 @@ class MinimaxAgent(Agent):
 
 if __name__ == '__main__':
     mm = MinimaxAgent('X')
-    mm.getMove()
+    mm.getMove(emptyState())

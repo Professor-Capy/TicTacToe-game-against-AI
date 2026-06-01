@@ -1,3 +1,4 @@
+from testStates import emptyState
 # used for determining the player
 def player(state: list) -> str:
     x: int = 0
@@ -94,17 +95,5 @@ def utility(winner: str | None = None) -> int:
 
 # Use this for testing
 if  __name__ == '__main__':
-    emptyState = [['#', '#', '#'],
-                  ['#', '#', '#'],
-                  ['#', '#', '#']]
-    terminalOState = [['O', 'X', '#'],
-                      ['O', 'X', 'X'],
-                      ['O', 'O', 'X']]
-    terminalXState = [['X', 'O', 'X'],
-                      ['#', 'X', 'O'],
-                      ['O', '#', 'X']]
-    terminalDrawState = [['O', 'X', 'O'],
-                         ['O', 'X', 'X'],
-                         ['X', 'O', 'X']]
-    print(terminal(emptyState))
+    print(terminal(emptyState()))
 
