@@ -14,9 +14,16 @@ class Agent(ABC):
         pass
 
 class MinimaxAgent(Agent):
-    def minimax(self, state: list, maximize: bool) -> int:
-        nextMax = not maximize
+    def minimax(self, state: list, isMaximize: bool) -> int:
+        nextMax = not isMaximize
+        isTerminal, score = terminal(state)
+        if isTerminal:
+            return score
 
+        actions = action(state)
+
+        if isMaximize:
+            
 
     def getMove(self, state: list) -> dict:
         actions = action(state)
@@ -28,7 +35,10 @@ class MinimaxAgent(Agent):
 
             if score > bestScore:
                 bestScore = score
-            
+                bestMove = move
+
+        return bestMove
+
 
 
 
