@@ -15,11 +15,13 @@ class Agent(ABC):
 
 class MinimaxAgent(Agent):
     def moveLoop(self, state: list, actions: tuple, maximize: bool):
+        nextMax = not maximize
         for move in actions:
             newState = result(state, move)
             isTerminal, point = terminal(newState)
             if isTerminal:
                 self.points[move].append(point)
+            self.moveLoop(newState, actions, nextMax)
 
     def getMove(self, state: list) -> dict:
         actions = action(state)
@@ -33,4 +35,4 @@ class MinimaxAgent(Agent):
 
 if __name__ == '__main__':
     mm = MinimaxAgent('X')
-    mm.getMove(emptyState())
+    mm.getMove(e)
