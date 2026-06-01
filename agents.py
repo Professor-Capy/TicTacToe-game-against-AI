@@ -18,10 +18,11 @@ class MinimaxAgent(Agent):
         nextMax = not maximize
         for move in actions:
             newState = result(state, move)
+            newActions = action(newState)
             isTerminal, point = terminal(newState)
             if isTerminal:
                 self.points[move].append(point)
-            self.moveLoop(newState, actions, nextMax)
+            self.moveLoop(newState, newActions, nextMax)
 
     def getMove(self, state: list) -> dict:
         actions = action(state)
@@ -35,4 +36,4 @@ class MinimaxAgent(Agent):
 
 if __name__ == '__main__':
     mm = MinimaxAgent('X')
-    mm.getMove(e)
+    mm.getMove(emptyState())
