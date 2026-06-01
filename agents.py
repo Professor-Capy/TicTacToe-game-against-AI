@@ -15,9 +15,9 @@ class Agent(ABC):
 class MinimaxAgent(Agent):
     def moveLoop(self, state: list, actions: tuple):
         for move in actions:
-            pass
+            newState = result(state, move)
 
     def get_move(self, state: list) -> dict:
         actions = action(state)
-        self.moveLoop(state, actions)
+        point = self.moveLoop(state, actions)
 
