@@ -26,12 +26,8 @@ class MinimaxAgent(Agent):
 
     def getMove(self, state: list) -> dict:
         actions = action(state)
-        self.points = {}
         for move in actions:
-            self.points[move] = []
-        self.moveLoop(state, actions, True)
-
-        print(self.points)
+            
 
 
 if __name__ == '__main__':
