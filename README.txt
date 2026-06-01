@@ -6,10 +6,14 @@ an example of an empty state looks like this
 
 X ALWAYS plays first, some code is based on that assumption
 
-i guess dataStructs also has a Queue, but its not rly needed here
+i guess dataStructs is here, buuuut dont mind it honestly:P
 
 player function accepts a singular param state, which is used for
 determining the player
+
+logic.py has all the  rules and stuff the minimax agent actually needs
+to know how the game looks and works and stuff
+
 
 result function accepts 2 params, currentState, and move
 it is used for finding the result of an action
@@ -25,3 +29,16 @@ this func is used for determining if a state is a terminal state, meaning if the
 
 utility function accepts 1 optional param, winner, with a default value of None
 it is used for finding the point for each winner of the game
+
+
+agent.py has all the ai stuff
+
+
+Agent class serves as a base class that all other Agent classes inherit from
+it also has one abstract method getMove
+
+MinimaxAgent class is a child class of the Agent class
+it contains two methods, getMove (inherited from the Agent Class) and minimax
+it is best advised to call getMove when finding a move
+
+
