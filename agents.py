@@ -16,6 +16,10 @@ class MinimaxAgent(Agent):
     def moveLoop(self, state: list, actions: tuple):
         for move in actions:
             newState = result(state, move)
+            isTerminal, winner = terminal(newState)
+            if isTerminal:
+                
+
 
     def get_move(self, state: list) -> dict:
         actions = action(state)
