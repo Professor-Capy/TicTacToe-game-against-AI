@@ -9,8 +9,15 @@ class Agent(ABC):
         self.min = "O" if max == "X" else "X"
 
     @abstractmethod
-    def get_move(self, state: list) -> tuple:
+    def get_move(self, state: list) -> dict:
         pass
 
 class MinimaxAgent(Agent):
-    
+    def moveLoop(self, state: list, actions: tuple):
+        for move in actions:
+            pass
+
+    def get_move(self, state: list) -> dict:
+        actions = action(state)
+        self.moveLoop(state, actions)
+
